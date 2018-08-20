@@ -1,0 +1,66 @@
+[
+    {
+        "id": 1,
+        "name": "Ibanez",
+        "type": "Electric",
+        "price": 15000000,
+        "img": "./img/ibanez.jpg",
+        "stock": 5
+    },
+    {
+        "id": 2,
+        "name": "ESP LTD",
+        "type": "Electric",
+        "price": 10000000,
+        "img": "./img/esp.jpg",
+        "stock": 5
+    },
+    {
+        "id": 3,
+        "name": "Fender",
+        "type": "Electric",
+        "price": 25000000,
+        "img": "./img/fender.jpg",
+        "stock": 5
+    },
+    {
+        "id": 4,
+        "name": "Jackson",
+        "type": "Electric",
+        "price": 8000000,
+        "img": "./img/jackson.jpg",
+        "stock": 5
+    },
+    {
+        "id": 5,
+        "name": "Yamaha",
+        "type": "Acoustic",
+        "price": 2000000,
+        "img": "./img/ac-2.jpg",
+        "stock": 5
+    },
+    {
+        "id": 6,
+        "name": "Taylor",
+        "type": "Acoustic",
+        "price": 40000000,
+        "img": "./img/taylor.jpg",
+        "stock": 5
+    },
+    {
+        "id": 7,
+        "name": "Cort",
+        "type": "Acoustic",
+        "price": 3500000,
+        "img": "./img/ac-3.jpg",
+        "stock": 5
+    },
+    {
+        "id": 8,
+        "name": "Fender",
+        "type": "Acoustic",
+        "price": 14000000,
+        "img": "./img/ac-4.jpg",
+        "stock": 5
+    }
+]

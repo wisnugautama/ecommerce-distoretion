@@ -1,0 +1,17 @@
+body {
+    font-family: 'Cinzel', serif;
+    color: #620b0a;
+    background-image: url('../img/background.jpg');
+    /* background-position: center; */
+    background-size: cover
+}
+
+.card-body {
+    background-color: #FBFBFB;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+button {
+    color: #620b0a;
+    background-color: #FBFBFB;
+}

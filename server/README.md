@@ -1,4 +1,4 @@
-# ecommerce-distoretion
+# e-commerce diStoretion
 ## Documentation
 
 ### List of User Routes :

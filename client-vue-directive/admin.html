@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>diStoretion</title>
+
+    <!-- title icon -->
+    <link rel="shortcut icon" href="./img/icon/electric-guitar-music-instrument.png">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    <!-- style css -->
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/content.css">
+    <link rel="stylesheet" href="./css/footer.css">
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- sweet alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Debug CSS -->
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="./css/debug.css" /> -->
+</head>
+
+<body>
+
+    <div id="admin">
+        <!-- header -->
+        <header>
+            <nav class="navbar navbar-expand-lg fixed-top">
+                <a class="navbar-brand" style="color: beige;">diSTOREtion
+                    <img src="./img/icon/electric-guitar-music-instrument.png" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                       
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn my-2 my-sm-0" type="submit" style="background-color: #620b0a; color: beige">Search</button>
+                        <a class="nav-link" href="" data-toggle="modal" data-target="#modal-add-item">add new item </a>
+                        <a v-on:click="logOut" class="nav-link" href="">logout </a>
+                    </form>
+                </div>
+            </nav>
+        </header>
+
+        <h1 style="text-align:center; margin-top: 100px;">Welcome Admin!!</h1>
+        <!-- container -->
+        <div class="container">
+            <h3 style="text-align: center;">diStoretion Product</h3>
+            <hr>
+            <div id="products-1" class="row">
+                <div class="col-sm-3" v-for="item in products">
+                    <div class="card" style="margin-top: 40px;">
+                        <img class="card-img-top" alt="Card image cap" v-bind:src="item.image">
+                        <div class="card-body">
+                            <h5 class="card-title"></h5>
+                            <p class="card-text"> {{ item.name }} </p>
+                            <p class="card-text">Price : {{item.price}} </p>
+                            <p class="card-text">Stock : {{item.stock}} </p>
+
+                            <!-- Button trigger modal -->
+                            <div class="action" style="text-align: center;">
+                                <button v-on:click="getOneItem(item)" data-toggle="modal" data-target="#modal-edit-item" type="button" class="btn btn-outline-danger">
+                                    Edit
+                                </button>
+                                <button v-on:click="removeItem(item)" type="button" class="btn btn-danger">
+                                    Delete
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal FOR add item-->
+        <div class="modal fade" id="modal-add-item" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">add item</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">item name</label>
+                                <input v-model="name" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="item name">
+                            </div>
+                            <div class="form-group">
+                                <label for="price">price</label>
+                                <input v-model="price" type="number" min="0" class="form-control" id="price" placeholder="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="stock">stock</label>
+                                <input v-model="stock" type="number" min="0" class="form-control" id="stock" placeholder="0">
+                            </div>
+                            <div class="form-group">
+                                <label>upload image</label>
+                                <input v-on:change="getImage" type="file" class="form-control" aria-describedby="emailHelp">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button v-on:click="addItem" data-dismiss="modal" type="button" class="btn btn-primary">add item</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal FOR Edit-->
+        <div class="modal fade" id="modal-edit-item" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit item</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">item name</label>
+                                <input v-model="name" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="item name">
+                            </div>
+                            <div class="form-group">
+                                <label for="price">price</label>
+                                <input v-model="price" type="number" min="0" class="form-control" id="price" placeholder="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="stock">stock</label>
+                                <input v-model="stock" type="number" min="0" class="form-control" id="stock" placeholder="0">
+                            </div>
+                            <div class="form-group">
+                                <label>upload image</label>
+                                <input v-on:change="getImage" type="file" class="form-control" aria-describedby="emailHelp">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+                        <button v-on:click="updateItem" data-dismiss="modal" type="button" class="btn btn-primary">edit item</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- script -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <script src="./lib/admin.js"></script>
+</body>
+
+</html>
