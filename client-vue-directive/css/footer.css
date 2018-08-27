@@ -1,0 +1,12 @@
+footer {
+    margin-top: 20px;
+    width: 100%;
+    background-color: black;
+    color: beige;
+}
+
+#container-footer {
+    margin-top: -1px;
+    height: 300px;
+    
+}

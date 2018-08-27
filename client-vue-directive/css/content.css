@@ -1,0 +1,39 @@
+body {
+    font-family: 'Cinzel', serif;
+    color: black;
+    background-image: url('../img/background.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+#carouselExampleControls {
+    margin-top: 50px;
+    width: 100%;
+}
+
+.carousel-inner {
+    height: 300px;
+}
+
+#products-1 {
+    margin-bottom: 50px;
+}
+
+#products-2 {
+    margin-bottom: 50px;
+}
+
+.container {
+    margin-top: 30px;
+}
+
+#store {
+    height: 350px;
+}
+
+/* .card {
+    box-shadow: 5px 2px 8px 2px grey;
+    border: 1px solid gray;
+} */
+
+

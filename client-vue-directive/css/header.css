@@ -1,0 +1,28 @@
+body {
+    background-color: white;
+}
+
+.navbar {
+    font-family: 'Cinzel', serif;
+    background-color: black;
+    height: 60px;
+    box-shadow: 5px 2px 8px 2px grey;
+}
+
+
+.navbar ul li {
+    color: beige;
+}
+
+a {
+    color: beige;
+}
+
+a:hover {
+    color: brown;
+}
+
+.navbar ul li button {
+    background-color: black;
+    color: beige;
+}

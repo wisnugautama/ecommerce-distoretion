@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>diStoretion</title>
+
+    <!-- title icon -->
+    <link rel="shortcut icon" href="./img/icon/electric-guitar-music-instrument.png">
+    <!-- swal -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- style -->
+    <link rel="stylesheet" href="./css/register.css">
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">   
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- Debug CSS -->
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="./css/debug.css" /> -->
+</head>
+
+<body>
+    <div id="register">
+        <div class="container">
+            <div class="row" style="text-align: center;">
+                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                    <div class="card card-signin my-5">
+                        <div class="card-body">
+                            <h1 class="text-center">diStoretion <img src="./img/icon/electric-guitar-music-instrument.png" alt=""> </h1>
+                            <br>
+                            <h5 class="card-title text-center">Register Form</h5>
+                            <form class="form" style="text-align: center;">
+                                <div class="form-label-group">
+                                    <input v-model="name" type="text" class="form-control inpt" placeholder="name" required>
+                                    <hr>
+                                </div>
+                                <div class="form-label-group">
+                                    <input v-model="email" type="email" class="form-control inpt" placeholder="Email address" required>
+                                    <hr>
+                                </div>
+
+                                <div class="form-label-group">
+                                    <input v-model="password" type="password" class="form-control inpt" placeholder="Password" required>
+                                    <hr>
+                                </div>
+                                <p>Already Have an Account? <a href="./login.html" style="color: brown;">Login here</a></p>
+                                <button class="btn custom-btn" type="submit" v-on:click="registerUser">Register</button>
+                                <br><br>
+                                <p style="text-align: center;">OR</p>
+                                Login via Facebook :
+                                <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./lib/register.js"></script>
+</body>
+
+</html>
